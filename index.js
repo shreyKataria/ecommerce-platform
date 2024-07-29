@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
@@ -8,6 +7,7 @@ dotenv.config();
 const authRoutes = require("./routes/authRoute");
 const sessionRoute = require("./routes/sessionRoute");
 const productRoute = require("./routes/productRoute");
+const orderRoute = require("./routes/orderRoute");
 const connectDB = require("./db/db");
 const signupLimiter = require("./middleware/limiter");
 
@@ -20,13 +20,9 @@ app.use(signupLimiter);
 app.use("/api", authRoutes);
 app.use("/api", sessionRoute);
 app.use("/api", productRoute);
+app.use("/api", orderRoute);
 
 connectDB();
-
-const db = mongoose.connection;
-db.once("open", () => {
-  console.log("Connected to MongoDB");
-});
 
 const PORT = process.env.PORT || 4000;
 
