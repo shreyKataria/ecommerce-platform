@@ -8,6 +8,7 @@ const authRoutes = require("./routes/authRoute");
 const sessionRoute = require("./routes/sessionRoute");
 const productRoute = require("./routes/productRoute");
 const orderRoute = require("./routes/orderRoute");
+const paymentRoute = require("./routes/paymentRoute");
 const connectDB = require("./db/db");
 const signupLimiter = require("./middleware/limiter");
 const mockStripe = require("./nock/paymentsNock");
@@ -27,6 +28,7 @@ app.use("/api", authRoutes);
 app.use("/api", sessionRoute);
 app.use("/api", productRoute);
 app.use("/api", orderRoute);
+app.use("/api", paymentRoute);
 
 // db
 connectDB();
