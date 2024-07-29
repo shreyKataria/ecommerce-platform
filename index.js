@@ -7,6 +7,7 @@ dotenv.config();
 
 const authRoutes = require("./routes/authRoute");
 const sessionRoute = require("./routes/sessionRoute");
+const productRoute = require("./routes/productRoute");
 const connectDB = require("./db/db");
 const signupLimiter = require("./middleware/limiter");
 
@@ -18,6 +19,7 @@ app.use(signupLimiter);
 
 app.use("/api", authRoutes);
 app.use("/api", sessionRoute);
+app.use("/api", productRoute);
 
 connectDB();
 
